@@ -1,152 +1,115 @@
-# Date Lab System - Backend
+# 🧪 Date Lab System - Backend (Appointment Lab API)
 
-Sistema backend para la plataforma Date Lab System. API REST construida con Node.js y Express, con soporte para PostgreSQL.
-
-## 📋 Descripción del Proyecto
-
-Este proyecto es el servidor backend de Date Lab System. Proporciona endpoints RESTful para gestionar usuarios, citas y datos relacionados. Utiliza Express como framework web, Objection.js con Knex para ORM/query builder, y PostgreSQL como base de datos.
-
-## 🚀 Características Principales
-
-- API REST con Express.js
-- ORM con Objection.js
-- Query builder con Knex.js
-- Soporte para PostgreSQL
-- Reloading automático en desarrollo con Nodemon
-- Pool de conexiones optimizado
-
-## 📦 Dependencias Instaladas
-
-### Dependencias Principales
-
-| Paquete | Versión | Descripción |
-|---------|---------|-------------|
-| **express** | ^5.2.1 | Framework web rápido y flexible para Node.js |
-| **pg** | ^8.20.0 | Cliente PostgreSQL para Node.js |
-| **objection** | ^3.1.5 | ORM ligero y flexible basado en SQL |
-| **knex** | ^3.2.3 | Query builder SQL para Node.js |
-| **nodemon** | ^3.1.14 | Herramienta para reiniciar automáticamente la aplicación en desarrollo |
-
-### Dependencias Secundarias
-
-| Paquete | Versión | Descripción |
-|---------|---------|-------------|
-| **tarn** | ^3.0.2 | Gestor de pool de conexiones |
-| **tildify** | ^2.0.0 | Convierte rutas absolutas a rutas con tilde |
-| **to-regex-range** | ^5.0.1 | Convierte rangos numéricos a expresiones regulares |
-| **toidentifier** | ^1.0.1 | Convierte strings a identificadores CSS válidos |
-| **touch** | ^3.1.1 | Implementación de comando touch para Node.js |
-| **type-is** | ^2.0.1 | Detecta tipos MIME en headers |
-| **undefsafe** | ^2.0.5 | Acceso seguro a propiedades anidadas |
-| **unpipe** | ^1.0.0 | Herramienta para desconectar streams |
-| **vary** | ^1.1.2 | Manejo del header Vary |
-| **wrappy** | ^1.0.2 | Wrapper para funciones |
-| **xtend** | ^4.0.2 | Utilidad para extender objetos |
-
-## 🛠️ Configuración y Scripts
-
-### Scripts Disponibles
-
-```json
-{
-  "test": "echo \"Error: no test specified\" && exit 1"
-}
-```
-
-> **Nota**: Los scripts de test aún no están configurados.
-
-### Scripts Recomendados
-
-Para ejecutar en desarrollo:
-```bash
-npm run dev  # (requiere configuración en package.json)
-```
-
-Para instalar dependencias:
-```bash
-npm install
-```
-
-## 📁 Estructura del Proyecto
-
-```
-date_lab_system_back/
-├── package.json          # Configuración del proyecto
-├── README.md             # Este archivo
-└── [otros archivos...]   # (completar según sea necesario)
-```
-
-## 🔧 Requisitos Previos
-
-- Node.js (versión 14 o superior)
-- npm (versión 6 o superior)
-- PostgreSQL (versión 12 o superior)
-
-## 📥 Instalación
-
-1. Clona el repositorio:
-```bash
-git clone https://github.com/RomelAnte/date_lab_system_back.git
-cd date_lab_system_back
-```
-
-2. Instala las dependencias:
-```bash
-npm install
-```
-
-3. Configura las variables de entorno (crear archivo `.env`):
-```bash
-DATABASE_URL=postgresql://usuario:contraseña@localhost:5432/date_lab
-PORT=3000
-NODE_ENV=development
-```
-
-4. Ejecuta la aplicación:
-```bash
-npm start
-# O en desarrollo con reloading automático:
-npx nodemon index.js
-```
-
-## 🗄️ Base de Datos
-
-Este proyecto utiliza **PostgreSQL** como gestor de base de datos. 
-
-### Herramientas de Base de Datos
-
-- **Knex.js**: Query builder para construcción de consultas SQL
-- **Objection.js**: ORM que proporciona modelos de datos con validaciones
-- **pg**: Driver nativo de PostgreSQL para Node.js
-
-### Configuración de Conexión
-
-La conexión a la base de datos se gestiona a través de un pool de conexiones configurado con **Tarn** para optimizar el uso de recursos.
-
-## 📝 Información del Repositorio
-
-- **Repositorio**: [GitHub - RomelAnte/date_lab_system_back](https://github.com/RomelAnte/date_lab_system_back)
-- **Licencia**: ISC
-- **Autor**: RomelAnte
-- **Versión**: 1.0.0
-
-## 🐛 Reporte de Problemas
-
-Si encuentras problemas o errores, por favor crea un issue en:
-[GitHub Issues](https://github.com/RomelAnte/date_lab_system_back/issues)
-
-## 📚 Documentación Útil
-
-- [Express.js Documentation](https://expressjs.com/)
-- [Objection.js Documentation](https://vincit.github.io/objection.js/)
-- [Knex.js Documentation](https://knexjs.org/)
-- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
-- [node-postgres (pg) Documentation](https://node-postgres.com/)
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Por favor, abre un PR con tus cambios.
+API RESTful de backend desarrollada en **Node.js**, **Express 5**, **Knex.js** y **Objection.js** sobre **PostgreSQL**, diseñada para la gestión de sedes, agendamiento de citas médicas y administración de análisis de laboratorio clínico.
 
 ---
 
-**Última actualización**: Marzo 2026
+## 📌 1. Problema
+El agendamiento de citas y la gestión de muestras en laboratorios clínicos a menudo se realiza en sistemas desorganizados o sin un backend escalable, lo que genera conflictos de horarios dobles, falta de trazabilidad en las sedes de atención y lentitud al procesar solicitudes de pacientes y personal médico.
+
+---
+
+## 🎯 2. Objetivo
+Desarrollar un servicio backend (*API RESTful*) robusto, modular y de alto rendimiento utilizando Express 5 y el ORM Objection.js con Knex.js. El sistema permite administrar las sedes del laboratorio (*branches*), usuarios, servicios de análisis clínicos y la programación eficiente de citas médicas con persistencia en PostgreSQL.
+
+---
+
+## 🛠️ 3. Stack
+- **Runtime & Entorno**: Node.js (CommonJS, `>=18.x`)
+- **Framework Web HTTP**: Express 5 (`express ^5.2.1`)
+- **Base de Datos Relacional**: PostgreSQL (`pg ^8.20.0`)
+- **Query Builder & ORM**: Knex.js (`knex ^3.2.5`) y Objection.js (`objection ^3.1.5`)
+- **Middleware & Pool**: Morgan (`morgan ^1.10.1`), Tarn (`tarn ^3.0.2` para pool de conexiones)
+- **Herramientas de Desarrollo**: Nodemon (`nodemon ^3.1.14` para hot-reloading)
+
+---
+
+## 📐 4. Arquitectura
+La aplicación sigue una arquitectura limpia para servicios REST API en Node.js:
+
+```text
+appointment_lab_system_back-1/
+├── migrations/               # Scripts de migraciones de esquemas SQL con Knex.js
+│   └── 20260325020625_create-table-sede.js # Migración de la tabla de sedes clínicas
+├── src/
+│   ├── config/               # Configuración de conexiones e infraestructura
+│   │   └── db.js             # Inicialización de la conexión Knex/Objection.js
+│   └── app.js                # Configuración de Express, middlewares y enrutamiento
+├── index.js                  # Punto de entrada y arranque del servidor HTTP (Puerto 3000)
+├── knexfile.js               # Configuración de entornos de base de datos (dev, staging, prod)
+└── package.json              # Gestión de dependencias y scripts (migrate, rollback, dev)
+```
+
+---
+
+## ⚙️ 5. Funcionalidades
+- 🏥 **Gestión de Sedes de Atencion**: Control de ubicaciones, direcciones y estado de operabilidad de sedes clínicas (`sede`).
+- 📅 **Servicios de Agendamiento**: Endpoints API RESTful para la creación, consulta y actualización de citas de laboratorio.
+- 🗄️ **Migraciones de Base de Datos**: Control de versiones de esquema en PostgreSQL mediante comandos Knex (`migrate:latest` y `migrate:rollback`).
+- ⚡ **Pool de Conexiones Optimizado**: Conexión eficiente a la base de datos relacional mediante la librería Tarn.
+- 🔄 **Entorno de Desarrollo Dinámico**: Recarga automática de cambios en tiempo real con Nodemon.
+
+---
+
+## 📊 6. Estado Actual
+🟢 **En Desarrollo / Base Funcional (v1.0.0)**: API backend estructurada en Express 5 con ORM Objection.js configurado, soporte para PostgreSQL y scripts de migración ejecutables.
+
+---
+
+## 🖼️ 7. Capturas
+
+> *Sección reservada para diagramas de arquitectura de base de datos o capturas de pruebas de endpoints en Postman / Insomnia.*
+
+---
+
+## 🚀 8. Cómo Ejecutarlo
+
+### Requisitos previos
+- **Node.js**: Versión 18.x o superior.
+- **npm**: Versión 6.x o superior.
+- **PostgreSQL**: Versión 12.x o superior con la base de datos `appointment_lab` creada.
+
+### Pasos de instalación y ejecución
+1. **Clonar el repositorio**:
+   ```bash
+   git clone https://github.com/RomelAnte/date_lab_system_back.git
+   cd date_lab_system_back
+   ```
+
+2. **Instalar dependencias**:
+   ```bash
+   npm install
+   ```
+
+3. **Configurar la base de datos PostgreSQL**:
+   Abre el archivo [`knexfile.js`](file:///C:/Users/User/Documents/GitHub/appointment_lab_system_back-1/knexfile.js) y ajusta tus credenciales locales:
+   ```javascript
+   development: {
+     client: 'postgresql',
+     connection: {
+       database: 'appointment_lab',
+       user: 'postgres',
+       password: 'tu_password'
+     }
+   }
+   ```
+
+4. **Ejecutar las migraciones de base de datos**:
+   ```bash
+   npm run migrate
+   ```
+
+5. **Iniciar el servidor backend**:
+   ```bash
+   npm run dev
+   ```
+   El servidor estará escuchando en `http://localhost:3000`.
+
+---
+
+## 🗺️ 9. Roadmap
+- [ ] Implementar autenticación y autorización segura con JWT (JSON Web Tokens) y contraseñas cifradas con `bcrypt`.
+- [ ] Definición completa de los modelos de Objection.js para `Usuario`, `Cita`, `Examen` y `Sede`.
+- [ ] Integración de documentación interactiva de la API con Swagger / OpenAPI.
+- [ ] Servicio de notificaciones por correo electrónico (Nodemailer / SendGrid) para confirmación de citas.
+- [ ] Pruebas unitarias e integración con Jest y Supertest.
